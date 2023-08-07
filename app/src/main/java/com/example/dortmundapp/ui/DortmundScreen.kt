@@ -16,4 +16,5 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 fun DortmundApp(windowSize: WindowWidthSizeClass) {
     val viewModel: DortmundViewModel = viewModel()
     val uiState by viewModel.uiState.collectAsState()
+
 }
