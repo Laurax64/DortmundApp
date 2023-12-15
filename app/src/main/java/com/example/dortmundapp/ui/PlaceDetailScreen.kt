@@ -1,8 +1,6 @@
 package com.example.dortmundapp.ui
 
-import android.widget.Toast
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -26,16 +24,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import com.example.dortmundapp.R
 import com.example.dortmundapp.data.Place
 
 /**
- * Displays a Place with its details
+ * Displays a Place with it's details
  */
 @Composable
 fun PlaceDetailsScreen(
@@ -57,7 +53,7 @@ fun PlaceDetailsScreen(
         ) {
             item {
                 if (isFullScreen) {
-                    ReplyDetailsScreenTopBar(
+                    DetailsScreenTopBar(
                         onBackPressed,
                         uiState,
                         Modifier
@@ -78,8 +74,11 @@ fun PlaceDetailsScreen(
     }
 }
 
+/**
+ * Displays the top bar of the place details screen
+ */
 @Composable
-private fun ReplyDetailsScreenTopBar(
+private fun DetailsScreenTopBar(
     onBackButtonClicked: () -> Unit,
     uiState: UiState,
     modifier: Modifier = Modifier
@@ -114,6 +113,8 @@ private fun ReplyDetailsScreenTopBar(
     }
 }
 
+
+
 /**
  * Displays a places name, image and description
  */
@@ -123,10 +124,6 @@ private fun PlaceDetailsCard(
     modifier: Modifier = Modifier,
     isFullScreen: Boolean = false,
 ) {
-    val context = LocalContext.current
-    val displayToast = { text: String ->
-        Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
-    }
     Card(
         modifier = modifier,
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
@@ -136,9 +133,9 @@ private fun PlaceDetailsCard(
                 .fillMaxWidth()
                 .padding(dimensionResource(R.dimen.detail_card_inner_padding))
         ) {
-            DetailsScreenHeader(
-                place,
-                Modifier.fillMaxWidth()
+            Text(
+                text = stringResource(place.name),
+                style = MaterialTheme.typography.labelMedium,
             )
             if (!isFullScreen) {
                 Text(
@@ -153,41 +150,15 @@ private fun PlaceDetailsCard(
             } else {
                 Spacer(modifier = Modifier.height(dimensionResource(R.dimen.detail_content_padding_top)))
             }
-            Column {
-                Image(painter = painterResource(place.painterResource),
-                    contentDescription = stringResource(place.name),
-                    modifier = modifier,
-                )
                 Text(
                     text = stringResource(place.details),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
-            }
-
-
         }
     }
 }
 
 
-@Composable
-private fun DetailsScreenHeader(place: Place, modifier: Modifier = Modifier) {
-    Row(modifier = modifier) {
-        Column(
-            modifier = Modifier
-                .weight(1f)
-                .padding(
-                    horizontal = dimensionResource(R.dimen.email_header_content_padding_horizontal),
-                    vertical = dimensionResource(R.dimen.email_header_content_padding_vertical)
-                ),
-            verticalArrangement = Arrangement.Center
-        ) {
-            Text(
-                text = stringResource(place.name),
-                style = MaterialTheme.typography.labelMedium
-            )
-        }
-    }
-}
+
 

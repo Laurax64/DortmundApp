@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.Icon
@@ -54,17 +53,17 @@ fun RecommendationScreen(
 ) {
     val navigationItemContentList = listOf(
         NavigationItemContent(
-            category = Category.Pool,
+            category = Category.Pools,
             icon = painterResource(R.drawable.pool),
             text = stringResource(id = R.string.swimming_pools)
         ),
         NavigationItemContent(
-            category = Category.Forest,
+            category = Category.Forests,
             icon = painterResource(R.drawable.forest),
             text = stringResource(id = R.string.forests)
         ),
         NavigationItemContent(
-            category = Category.Park,
+            category = Category.Parks,
             icon = painterResource(R.drawable.park),
             text = stringResource(id = R.string.parks)
         )
@@ -136,7 +135,7 @@ private fun AppContent(
         Row(modifier = Modifier.fillMaxSize()) {
             AnimatedVisibility(visible = navigationType == NavigationType.NAVIGATION_RAIL) {
                 val navigationRailContentDescription = stringResource(R.string.navigation_rail)
-                ReplyNavigationRail(
+                NavigationRail(
                     currentTab = uiState.currentCategory,
                     onTabPressed = onTabPressed,
                     navigationItemContentList = navigationItemContentList,
@@ -171,7 +170,7 @@ private fun AppContent(
                 ) {
                     val bottomNavigationContentDescription =
                         stringResource(R.string.navigation_bottom)
-                    ReplyBottomNavigationBar(
+                    BottomNavigationBar(
                         currentCategory = uiState.currentCategory,
                         onTabPressed = onTabPressed,
                         navigationItemContentList = navigationItemContentList,
@@ -186,7 +185,7 @@ private fun AppContent(
 }
 
 @Composable
-private fun ReplyNavigationRail(
+private fun NavigationRail(
     currentTab: Category,
     onTabPressed: ((Category) -> Unit),
     navigationItemContentList: List<NavigationItemContent>,
@@ -206,7 +205,7 @@ private fun ReplyNavigationRail(
 }
 
 @Composable
-private fun ReplyBottomNavigationBar(
+private fun BottomNavigationBar(
     currentCategory: Category,
     onTabPressed: ((Category) -> Unit),
     navigationItemContentList: List<NavigationItemContent>,
@@ -268,7 +267,8 @@ private fun NavigationDrawerHeader(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Logo(modifier = Modifier.size(dimensionResource(R.dimen.reply_logo_size)))
+        Text(text = stringResource(R.string.app_name),
+            style = MaterialTheme.typography.headlineMedium)
     }
 }
 

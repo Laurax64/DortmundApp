@@ -39,7 +39,7 @@ class ViewModel : ViewModel() {
         _uiState.value =
             UiState(
                 categories = categories,
-                currentSelectedPlace = categories[Category.Park]?.get(0)
+                currentSelectedPlace = categories[Category.Parks]?.get(0)
                     ?: LocalPlacesDataProvider.defaultPlace
             )
     }

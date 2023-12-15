@@ -9,7 +9,7 @@ import com.example.dortmundapp.data.Place
  */
 data class UiState(
     val categories: Map<Category, List<Place>> = emptyMap(),
-    val currentCategory: Category = Category.Park,
+    val currentCategory: Category = Category.Parks,
     val currentSelectedPlace: Place = LocalPlacesDataProvider.defaultPlace,
     val isShowingRecommendations: Boolean = true
 ) {
