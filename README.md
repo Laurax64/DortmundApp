@@ -7,7 +7,7 @@
 ![Screenshot_2023-12-15-20-36-00-100_com example dortmundapp](https://github.com/Laurax64/Dortmund-App/assets/56238822/e3838e9e-c007-4093-a88c-ab4dd7c01765)
 ![Screenshot_2023-12-15-20-35-41-136_com example dortmundapp (1)](https://github.com/Laurax64/Dortmund-App/assets/56238822/111a0523-f535-4a07-b610-8546393e8429)
 
-This is my implementation of developer.android.com/codelabs/basic-android-kotlin-compose-my-city.
+This is my implementation of https://developer.android.com/codelabs/basic-android-kotlin-compose-my-city.
 In this unit, I learned:
 
 
