@@ -10,8 +10,13 @@
 This is my implementation of developer.android.com/codelabs/basic-android-kotlin-compose-my-city.
 In this unit, I learned:
 
+
 -How to build an app with multiple screens
+
 -How to build an adaptive layout so that your app works well across a range of screen sizes
+
 -The importance of app architecture
+
 -How to ensure my app adheres to the activity lifecycle without wasting unnecessary resources
+
 -How to preserve user state across device configuration changes
