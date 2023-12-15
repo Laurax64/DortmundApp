@@ -13,7 +13,7 @@ In this unit, I learned:
 
 -How to build an app with multiple screens
 
--How to build an adaptive layout so that your app works well across a range of screen sizes
+-How to build an adaptive layout so that my app works well across a range of screen sizes
 
 -The importance of app architecture
 
