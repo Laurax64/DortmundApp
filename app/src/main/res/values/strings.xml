@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Dortmund App</string>
+    <string name="navigation_drawer">Navigation Drawer</string>
+    <string name="navigation_rail">Navigation Rail</string>
+    <string name="navigation_bottom">Navigation Bottom</string>
+    <string name="navigation_back">Back</string>
+
     <string name="parks">Parks</string>
     <string name="forests">Forests</string>
     <string name="swimming_pools">Swimming Pools</string>
@@ -10,4 +15,10 @@
     <string name="burgholzwald">Burgholzwald</string>
     <string name="grävingholz">Grävingholz</string>
     <string name="aplerbecker_wald">Aplerbecker Wald</string>
+
+    <string name="Solebad_Wischlingen">Solebad Wischlingen</string>
+    <string name="Freibad_Stockheide">Freibad Stockheide</string>
+    <string name="Freibad_Hengstey">Freibad Hengstey</string>
+    <string name="details_screen">details screen</string>
+
 </resources>

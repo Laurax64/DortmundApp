@@ -1,78 +1,99 @@
 package com.example.dortmundapp.data
 
 import com.example.dortmundapp.R
-import com.example.dortmundapp.model.Place
+import com.example.dortmundapp.data.Category.*
 
 /**
  * Places data
  */
-class LocalPlacesDataProvider(private val categoryID: Int) {
-
-    fun getPlacesData(): List<Place> {
-        return when (categoryID) {
-            1 -> parkList()
-            2 -> forestList()
-            else -> poolList()
-        }
-    }
-
-    private fun parkList(): List<Place> {
-        return listOf(
-            Place(
-                id = 1,
-                titleResourceId = R.string.westfalenpark_dortmund,
-                placeDetails = R.string.place_details
-            ),
-            Place(
-                id = 2,
-                titleResourceId = R.string.Westpark,
-                placeDetails = R.string.place_details
-            ),
-            Place(
-                id = 3,
-                titleResourceId = R.string.Fredenbaumpark,
-                placeDetails = R.string.place_details
-            )
+object LocalPlacesDataProvider {
+    val allPlaces = listOf(
+        Place(
+            id = 1,
+            name = R.string.westfalenpark_dortmund,
+            details = R.string.place_details,
+            painterResource = R.drawable.park,
+            category = Park
+        ),
+        Place(
+            id = 2,
+            name = R.string.Westpark,
+            details = R.string.place_details,
+            painterResource = R.drawable.park,
+            category = Park
+        ),
+        Place(
+            id = 3,
+            name = R.string.Fredenbaumpark,
+            details = R.string.place_details,
+            painterResource = R.drawable.park,
+            category = Park
+        ),
+        Place(
+            id = 4,
+            name = R.string.burgholzwald,
+            details = R.string.place_details,
+            painterResource = R.drawable.forest,
+            category = Forest
+        ),
+        Place(
+            id = 5,
+            name = R.string.grävingholz,
+            details = R.string.place_details,
+            painterResource = R.drawable.forest,
+            category = Forest
+        ),
+        Place(
+            id = 6,
+            name = R.string.aplerbecker_wald,
+            details = R.string.place_details,
+            painterResource = R.drawable.forest,
+            category = Forest
+        ),
+        Place(
+            id = 7,
+            name = R.string.Freibad_Hengstey,
+            details = R.string.place_details,
+            painterResource = R.drawable.pool,
+            category = Pool
+        ),
+        Place(
+            id = 8,
+            name = R.string.Freibad_Stockheide,
+            details = R.string.place_details,
+            painterResource = R.drawable.pool,
+            category = Pool
+        ),
+        Place(
+            id = 9,
+            name = R.string.aplerbecker_wald,
+            details = R.string.Solebad_Wischlingen,
+            painterResource = R.drawable.pool,
+            category = Pool
+        ),
         )
+
+    /**
+     * Get a [Place] with the given [id].
+     */
+    fun get(id: Long): Place? {
+        return allPlaces.firstOrNull { it.id == id }
     }
 
-    private fun forestList(): List<Place> {
-        return listOf(
-            Place(
-                id = 4,
-                titleResourceId = R.string.burgholzwald,
-                placeDetails = R.string.place_details
-            ),
-            Place(
-                id = 5,
-                titleResourceId = R.string.grävingholz,
-                placeDetails = R.string.place_details
-            ),
-            Place(
-                id = 6,
-                titleResourceId = R.string.aplerbecker_wald,
-                placeDetails = R.string.place_details
-            )
-        )
-    }
+    val defaultPlace = allPlaces[0]
 
-    private fun poolList(): List<Place> {
-        return listOf(
-            Place(
-                id = 7,
-                titleResourceId = R.string.burgholzwald,
-                placeDetails = R.string.place_details
-            ),
-            Place(
-                id = 8,
-                titleResourceId = R.string.grävingholz,
-                placeDetails = R.string.place_details
-            ),
-            Place(
-                id = 9,
-                titleResourceId = R.string.aplerbecker_wald,
-                placeDetails = R.string.place_details
-            )
-        )
-    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
