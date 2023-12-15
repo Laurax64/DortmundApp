@@ -66,8 +66,8 @@ object LocalPlacesDataProvider {
         ),
         Place(
             id = 9,
-            name = R.string.aplerbecker_wald,
-            details = R.string.Solebad_Wischlingen,
+            name = R.string.Solebad_Wischlingen,
+            details = R.string.place_details,
             painterResource = R.drawable.pool,
             category = Pool
         ),
@@ -80,7 +80,7 @@ object LocalPlacesDataProvider {
         return allPlaces.firstOrNull { it.id == id }
     }
 
-    val defaultPlace = allPlaces[0]
+    val defaultPlace = allPlaces[7]
 
 }
 

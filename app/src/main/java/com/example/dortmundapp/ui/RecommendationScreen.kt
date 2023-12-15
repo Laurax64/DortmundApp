@@ -54,9 +54,9 @@ fun RecommendationScreen(
 ) {
     val navigationItemContentList = listOf(
         NavigationItemContent(
-            category = Category.Park,
+            category = Category.Pool,
             icon = painterResource(R.drawable.pool),
-            text = stringResource(id = R.string.parks)
+            text = stringResource(id = R.string.swimming_pools)
         ),
         NavigationItemContent(
             category = Category.Forest,
@@ -66,7 +66,7 @@ fun RecommendationScreen(
         NavigationItemContent(
             category = Category.Park,
             icon = painterResource(R.drawable.park),
-            text = stringResource(id = R.string.swimming_pools)
+            text = stringResource(id = R.string.parks)
         )
     )
 
