@@ -8,8 +8,8 @@
     <string name="parks">Parks</string>
     <string name="forests">Forests</string>
     <string name="swimming_pools">Swimming Pools</string>
-    <string name="westfalenpark_dortmund">Westfalenpark Dortmund</string>
-    <string name="place_details">Details about the place could show up here. Since I have developed the app only for practice, \nonly this text is here.</string>
+    <string name="westfalenparK">Westfalenpark</string>
+    <string name="place_details">Details about the place could show up here. Since I have developed the app only for practice, only this text is here.</string>
     <string name="Westpark">Westpark</string>
     <string name="Fredenbaumpark">Fredenbaumpark</string>
     <string name="burgholzwald">Burgholzwald</string>

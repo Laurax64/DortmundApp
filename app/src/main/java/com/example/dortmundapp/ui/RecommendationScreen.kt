@@ -1,23 +1,6 @@
-/*
- * Copyright (C) 2023 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.dortmundapp.ui
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -61,7 +44,7 @@ import com.example.dortmundapp.utils.NavigationType
 fun RecommendationScreen(
     navigationType: NavigationType,
     contentType: ContentType,
-    uiState: UiState,
+    uiState: DortmundUiState,
     onTabPressed: (Category) -> Unit,
     onPlaceCardPressed: (Place) -> Unit,
     onDetailScreenBackPressed: () -> Unit,
@@ -94,10 +77,9 @@ fun RecommendationScreen(
                         selectedDestination = uiState.currentCategory,
                         onTabPressed = onTabPressed,
                         navigationItemContentList = navigationItemContentList,
-                        modifier = Modifier
+                        modifier = modifier
                             .wrapContentWidth()
                             .fillMaxHeight()
-                            .background(MaterialTheme.colorScheme.inverseOnSurface)
                             .padding(dimensionResource(R.dimen.drawer_padding_content))
                     )
                 }
@@ -117,20 +99,20 @@ fun RecommendationScreen(
     } else {
         if (uiState.isShowingRecommendations) {
             AppContent(
+                modifier = modifier,
                 navigationType = navigationType,
                 contentType = contentType,
                 uiState = uiState,
                 onTabPressed = onTabPressed,
                 onPlaceCardPressed = onPlaceCardPressed,
                 navigationItemContentList = navigationItemContentList,
-                modifier = modifier
             )
         } else {
             PlaceDetailsScreen(
                 uiState = uiState,
                 isFullScreen = true,
-                modifier = modifier,
-                onBackPressed = onDetailScreenBackPressed
+                onBackPressed = onDetailScreenBackPressed,
+                modifier = modifier
             )
         }
     }
@@ -141,7 +123,7 @@ fun RecommendationScreen(
 private fun AppContent(
     navigationType: NavigationType,
     contentType: ContentType,
-    uiState: UiState,
+    uiState: DortmundUiState,
     onTabPressed: ((Category) -> Unit),
     onPlaceCardPressed: (Place) -> Unit,
     navigationItemContentList: List<NavigationItemContent>,
@@ -160,9 +142,7 @@ private fun AppContent(
                 )
             }
             Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(MaterialTheme.colorScheme.inverseOnSurface)
+                modifier = Modifier.fillMaxSize()
             ) {
                 if (contentType == ContentType.RECOMMENDATIONS_AND_DETAIL) {
                     ListAndDetailContent(
@@ -177,7 +157,7 @@ private fun AppContent(
                         modifier = Modifier
                             .weight(1f)
                             .padding(
-                                horizontal = dimensionResource(R.dimen.email_list_only_horizontal_padding)
+                                horizontal = dimensionResource(R.dimen.place_list_only_horizontal_padding)
                             )
                     )
                 }
@@ -249,9 +229,7 @@ private fun NavigationDrawerContent(
 ) {
     Column(modifier = modifier) {
         NavigationDrawerHeader(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(dimensionResource(R.dimen.profile_image_padding)),
+            modifier = Modifier.fillMaxWidth()
         )
         for (navItem in navigationItemContentList) {
             NavigationDrawerItem(

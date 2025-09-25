@@ -1,22 +1,7 @@
-/*
- * Copyright (C) 2023 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.dortmundapp.ui
 
 import android.app.Activity
+import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -32,17 +17,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextOverflow
 import com.example.dortmundapp.R
 import com.example.dortmundapp.data.Place
 
 
 @Composable
 fun ListOnlyContent(
-    uiState: UiState,
+    uiState: DortmundUiState,
     onPlaceCardPressed: (Place) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -51,7 +34,7 @@ fun ListOnlyContent(
     LazyColumn(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(
-            dimensionResource(R.dimen.email_list_item_vertical_spacing)
+            dimensionResource(R.dimen.place_list_item_vertical_spacing)
         )
     ) {
         item {
@@ -78,7 +61,7 @@ fun ListOnlyContent(
  */
 @Composable
 fun ListAndDetailContent(
-    uiState: UiState,
+    uiState: DortmundUiState,
     onPlaceCardPressed: (Place) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -92,7 +75,7 @@ fun ListAndDetailContent(
                     top = dimensionResource(R.dimen.list_and_detail_list_padding_top)
                 ),
             verticalArrangement = Arrangement.spacedBy(
-                dimensionResource(R.dimen.email_list_item_vertical_spacing)
+                dimensionResource(R.dimen.place_list_item_vertical_spacing)
             )
         ) {
             items(places, key = { place -> place.id }) { place ->
@@ -105,7 +88,7 @@ fun ListAndDetailContent(
                 )
             }
         }
-        val activity = LocalContext.current as Activity
+        val activity = LocalActivity.current as Activity
         PlaceDetailsScreen(
             uiState = uiState,
             modifier = Modifier.weight(1f),
@@ -135,24 +118,13 @@ fun PlaceListItem(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(dimensionResource(R.dimen.email_list_item_inner_padding))
+                .padding(dimensionResource(R.dimen.place_list_item_inner_padding))
         ) {
 
             Text(
                 text = stringResource(place.name),
-                style = MaterialTheme.typography.bodyLarge,
+                style = MaterialTheme.typography.titleLarge,
                 color = MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier.padding(
-                    top = dimensionResource(R.dimen.email_list_item_header_subject_spacing),
-                    bottom = dimensionResource(R.dimen.email_list_item_subject_body_spacing)
-                ),
-            )
-            Text(
-                text = stringResource(place.details),
-                style = MaterialTheme.typography.bodyMedium,
-                maxLines = 2,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                overflow = TextOverflow.Ellipsis
             )
         }
     }
